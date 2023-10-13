@@ -317,9 +317,9 @@
 					$Value = $this -> Data[$Key];
 					foreach ($Value as $K => $V)
 					{
-						if (stripos($V['Value'], 'uri:') === 0)
+						if (is_array($V) && isset($V['Value']) && stripos($V['Value'], 'uri:') === 0)
 						{
-							$Value[$K]['Value'] = substr($V, 4);
+							$Value[$K]['Value'] = substr($V['Value'], 4);
 							$Value[$K]['Encoding'] = 'uri';
 						}
 					}
